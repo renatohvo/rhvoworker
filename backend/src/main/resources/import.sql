@@ -1,0 +1,10 @@
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('João Maria Silva', '12345678900', 12212.0, TIMESTAMP WITH TIME ZONE '1950-08-21T22:45:00.00Z', 3);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Maria João José', '23464577800', 13433.0, TIMESTAMP WITH TIME ZONE '1950-12-31T22:45:00.00Z', 1);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Helena Joyce Macedo', '23454466600', 14432.0, TIMESTAMP WITH TIME ZONE '1955-07-21T22:45:00.00Z', 0);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Alice Maravilha Godoy', '11122233344', 15200.0, TIMESTAMP WITH TIME ZONE '1960-06-21T22:45:00.00Z', 2);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Laura Michele Matsuka', '43344466600', 16144.0, TIMESTAMP WITH TIME ZONE '1958-11-21T22:45:00.00Z', 1);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Miguel Arthur Leroy', '99988877799', 18009.0, TIMESTAMP WITH TIME ZONE '1979-09-21T22:45:00.00Z', 4);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Neusa Maria Amaro', '98765432111', 12112.0, TIMESTAMP WITH TIME ZONE '1981-02-21T22:45:00.00Z', 3);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Americo Brás Arruda', '22233344455', 19999.0, TIMESTAMP WITH TIME ZONE '1982-01-21T22:45:00.00Z', 2);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Ataíde de Jesus e Maria', '45698732122', 20112.0, TIMESTAMP WITH TIME ZONE '1983-03-21T22:45:00.00Z', 5);
+INSERT INTO tb_worker (name, cpf, income, birth_Date, children) VALUES ('Mayla Gaspar Zaylachenko', '34512355500', 35012.0, TIMESTAMP WITH TIME ZONE '1995-02-18T22:45:00.00Z', 7);
