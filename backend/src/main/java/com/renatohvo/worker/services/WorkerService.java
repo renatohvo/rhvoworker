@@ -31,5 +31,21 @@ public class WorkerService {
 		Worker entity = obj.orElseThrow(() -> new ResourceNotFoundException("ENTITY NOT FOUND"));
 		return new WorkerDTO(entity);
 	}
+	
+	@Transactional
+	public WorkerDTO insert(WorkerDTO dto) {
+		Worker entity = new Worker();
+		copyDtoToEntity(dto , entity);
+		entity = repository.save(entity);
+		return new WorkerDTO(entity);
+	}
+
+	private void copyDtoToEntity(WorkerDTO dto, Worker entity) {
+		entity.setName(dto.getName());		
+		entity.setCpf(dto.getCpf());		
+		entity.setIncome(dto.getIncome());		
+		entity.setBirthDate(dto.getBirthDate());		
+		entity.setChildren(dto.getChildren());		
+	}
 
 }
