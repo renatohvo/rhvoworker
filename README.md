@@ -1,5 +1,5 @@
 <h1>
-    RHVO Worker - Backend
+    RHVO Worker - CRUD Backend Exercise
 </h1>
 <h2>
     <ul dir="auto">
