@@ -19,8 +19,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.renatohvo.worker.dto.WorkerDTO;
 import com.renatohvo.worker.services.WorkerService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping(value = "/workers")
+@Api(tags = "Worker Resource", value = "WorkerResource", description = "Controller for Workers")
 public class WorkerResource {
 	
 	@Autowired
