@@ -1,6 +1,6 @@
 # RHVO Worker - CRUD Backend Training
 
-### Link Postman >> <https://www.getpostman.com/collections/bfaba653424907b64bf1>
+### Link Postman >> <https://elements.getpostman.com/redirect?entityId=21956516-843a5314-6456-45ff-9f0f-ea0fb189f441&entityType=collection>
 
 ## Sobre o projeto
 
@@ -8,13 +8,15 @@ Criação, Consulta, Atualização e Destruição de Dados de Trabalhadores.
 
 ## Tecnologias utilizadas
 
-- API REST com Java e Spring Boot
-- ORM com JPA
+- API REST
+- Java
+- Spring Boot
+- JPA / Hibernate
 - DTO
 - Maven
 - Postman
 - Swagger
-- Postgres
+- PostgreSQL
 - Docker
 - Git
 
@@ -24,7 +26,7 @@ Pré-requisitos: Java 11
 
 ```bash
 # clonar repositório
-git clone https://github.com/renatohvo/rhvoworker
+git clone https://github.com/renatohvo/rhvoworker.git
 
 # entrar na pasta do projeto backend
 cd backend
