@@ -1,8 +1,9 @@
 # RHVO Worker - CRUD Backend Training
-
-### Link Postman >> <https://elements.getpostman.com/redirect?entityId=21956516-843a5314-6456-45ff-9f0f-ea0fb189f441&entityType=collection>
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/renatohvo/rhvoworker/blob/main/LICENSE) 
 
 ## Sobre o projeto
+
+[Link Postman Collection](https://elements.getpostman.com/redirect?entityId=21956516-843a5314-6456-45ff-9f0f-ea0fb189f441&entityType=collection "Link Postman Collection")
 
 Criação, Consulta, Atualização e Destruição de Dados de Trabalhadores.
 
@@ -34,6 +35,12 @@ cd backend
 # executar o projeto
 ./mvnw spring-boot:run
 ```
+
+## Autor
+
+Renato Henrique Vasconcelos
+
+https://www.linkedin.com/in/renatohvo/
 
 ## 
 
