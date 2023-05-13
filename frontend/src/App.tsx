@@ -1,7 +1,6 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { format } from 'date-fns';
-
-const BASE_URL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8080";
+import { BASE_URL } from './util/request';
 
 interface Worker {
   id: number;
@@ -16,7 +15,7 @@ const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = `0${date.getMonth() + 1}`.slice(-2);
-  const day = `0${date.getDate()}`.slice(-2);
+  const day = `0${date.getDate() + 1}`.slice(-2);
 
   return `${year}-${month}-${day}`;
 };
@@ -53,7 +52,10 @@ function App() {
     e.preventDefault();
 
     const { birthDate, ...rest } = newItem;
-    const formattedBirthDate = format(new Date(birthDate), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    const formattedBirthDate = format(
+      new Date(birthDate),
+      "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    );
 
     await fetch(`${BASE_URL}/workers`, {
       method: 'POST',
@@ -161,7 +163,7 @@ function App() {
             <div>Nome: {worker.name}</div>
             <div>CPF: {worker.cpf}</div>
             <div>Renda: {worker.income}</div>
-            <div>Data de Nascimento: {worker.birthDate}</div>
+            <div>Data de Nascimento: {formatDate(worker.birthDate)}</div>
             <div>Número de Filhos: {worker.children}</div>
             {editItem && editItem.id === worker.id ? (
               <div>
