@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { format } from 'date-fns';
 import { BASE_URL } from './util/request';
+import './App.css'
 
 interface Worker {
   id: number;
@@ -99,7 +100,7 @@ function App() {
         new Date(editItem.birthDate),
         "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
       );
-  
+
       await fetch(`${BASE_URL}/workers/${editItem.id}`, {
         method: 'PUT',
         headers: {
@@ -107,59 +108,59 @@ function App() {
         },
         body: JSON.stringify({ ...editItem, birthDate: formattedBirthDate }),
       });
-  
+
       fetchData();
       setEditItem(null);
     }
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Lista de Trabalhadores</h1>
-      <div>
+      <div className="edit-form">
         <h3>Adicionar Trabalhador</h3>
-          <form onSubmit={addWorker}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Nome"
-              value={newItem.name}
-              onChange={handleInputChange}
-            />
-            <input
-              type="text"
-              name="cpf"
-              placeholder="CPF"
-              value={newItem.cpf}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="income"
-              placeholder="Renda"
-              value={newItem.income}
-              onChange={handleInputChange}
-            />
-            <input
-              type="date"
-              name="birthDate"
-              placeholder="Data de Nascimento"
-              value={newItem.birthDate}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="children"
-              placeholder="Número de Filhos"
-              value={newItem.children}
-              onChange={handleInputChange}
-            />
-            <button type="submit">Adicionar</button>
-          </form>
-        </div>
+        <form onSubmit={addWorker}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nome"
+            value={newItem.name}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="cpf"
+            placeholder="CPF"
+            value={newItem.cpf}
+            onChange={handleInputChange}
+          />
+          <input
+            type="number"
+            name="income"
+            placeholder="Renda"
+            value={newItem.income}
+            onChange={handleInputChange}
+          />
+          <input
+            type="date"
+            name="birthDate"
+            placeholder="Data de Nascimento"
+            value={newItem.birthDate}
+            onChange={handleInputChange}
+          />
+          <input
+            type="number"
+            name="children"
+            placeholder="Número de Filhos"
+            value={newItem.children}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Adicionar</button>
+        </form>
+      </div>
       <ul>
         {data.map((worker) => (
-          <li key={worker.id}>
+          <li key={worker.id} className="edit-item">
             <div>Nome: {worker.name}</div>
             <div>CPF: {worker.cpf}</div>
             <div>Renda: {worker.income}</div>
@@ -169,51 +170,58 @@ function App() {
               <div>
                 <input
                   type="text"
+                  className="edit-input"
                   value={editItem.name}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e) =>
                     setEditItem({ ...editItem, name: e.target.value })
                   }
                 />
                 <input
                   type="text"
+                  className="edit-input"
                   value={editItem.cpf}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e) =>
                     setEditItem({ ...editItem, cpf: e.target.value })
                   }
-                  />
-                  <input
-                    type="number"
-                    value={editItem.income}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setEditItem({ ...editItem, income: Number(e.target.value) })
-                    }
-                  />
-                  <input
-                    type="date"
-                    value={editItem.birthDate}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setEditItem({ ...editItem, birthDate: e.target.value })
-                    }
-                  />
-                  <input
-                    type="number"
-                    value={editItem.children}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setEditItem({ ...editItem, children: Number(e.target.value) })
-                    }
-                  />
+                />
+                <input
+                  type="number"
+                  className="edit-input"
+                  value={editItem.income}
+                  onChange={(e) =>
+                    setEditItem({ ...editItem, income: Number(e.target.value) })
+                  }
+                />
+                <input
+                  type="date"
+                  className="edit-input"
+                  value={editItem.birthDate}
+                  onChange={(e) =>
+                    setEditItem({ ...editItem, birthDate: e.target.value })
+                  }
+                />
+                <input
+                  type="number"
+                  className="edit-input"
+                  value={editItem.children}
+                  onChange={(e) =>
+                    setEditItem({ ...editItem, children: Number(e.target.value) })
+                  }
+                />
+                <div >
                   <button onClick={updateWorker}>Salvar</button>
-                  <button onClick={cancelEdit}>Cancelar</button>
+                  <button onClick={cancelEdit} className="cancel-button">Cancelar</button>
                 </div>
-              ) : (
-                <div>
-                  <button onClick={() => deleteWorker(worker.id)}>Deletar</button>
-                  <button onClick={() => editWorker(worker)}>Editar</button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+              </div>
+            ) : (
+              <div >
+                <button onClick={() => deleteWorker(worker.id)}>Deletar</button>
+                <button onClick={() => editWorker(worker)}>Editar</button>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
