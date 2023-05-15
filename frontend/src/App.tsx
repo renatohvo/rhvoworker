@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   const fetchData = async () => {
-    const response = await fetch(`${BASE_URL}/workers`);
+    const response = await fetch(`${BASE_URL}/workers?sort=id,desc`);
     const jsonData = await response.json();
     setData(jsonData.content);
   };
@@ -163,7 +163,7 @@ function App() {
           <li key={worker.id} className="edit-item">
             <div>Nome: {worker.name}</div>
             <div>CPF: {worker.cpf}</div>
-            <div>Renda: {worker.income}</div>
+            <div>Renda: R$ {worker.income}</div>
             <div>Data de Nascimento: {formatDate(worker.birthDate)}</div>
             <div>Número de Filhos: {worker.children}</div>
             {editItem && editItem.id === worker.id ? (
@@ -215,7 +215,7 @@ function App() {
               </div>
             ) : (
               <div >
-                <button onClick={() => deleteWorker(worker.id)}>Deletar</button>
+                <button onClick={() => deleteWorker(worker.id)} className="cancel-button">Deletar</button>
                 <button onClick={() => editWorker(worker)}>Editar</button>
               </div>
             )}
