@@ -11,7 +11,7 @@ interface Worker {
   cpf: string;
   income: number;
   birthDate: string;
-  children: string;
+  children: number;
 }
 
 const formatDate = (dateString: string): string => {
@@ -33,7 +33,7 @@ function App() {
     cpf: '',
     income: 1,
     birthDate: '',
-    children: ''
+    children: 0
   });
   const [editItem, setEditItem] = useState<Worker | null>(null);
 
@@ -82,7 +82,7 @@ function App() {
       cpf: '',
       income: 1,
       birthDate: '',
-      children: ''
+      children: 0
     });
   };
 
@@ -106,11 +106,11 @@ function App() {
   const updateWorker = async () => {
     if (editItem) {
 
-      if (!editItem.name || !editItem.cpf || !editItem.income || !editItem.birthDate || !editItem.children) {
+      if (!editItem.name || !editItem.cpf || !editItem.income || !editItem.birthDate) {
         setIsFormValid(false);
         return;
       }
-      setIsFormValid(true);  
+      setIsFormValid(true);
 
       const formattedBirthDate = format(
         new Date(editItem.birthDate),
@@ -157,7 +157,7 @@ function App() {
             value={newItem.income}
             decimalsLimit={2}
             prefix="R$"
-            onValueChange={(e:any) => {
+            onValueChange={(e: any) => {
               setNewItem({ ...newItem, income: e });
             }}
           />
@@ -168,9 +168,8 @@ function App() {
             value={newItem.birthDate}
             onChange={handleInputChange}
           />
-          <InputMask
-            mask="9" // Máscara para Número de Filhos
-            type="text"
+          <input
+            type="number"
             name="children"
             placeholder="Número de Filhos"
             value={newItem.children}
@@ -203,7 +202,7 @@ function App() {
                   type="text"
                   className="edit-input"
                   value={editItem.cpf}
-                  onChange={(e: any) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setEditItem({ ...editItem, cpf: e.target.value })
                   }
                 />
@@ -224,13 +223,12 @@ function App() {
                     setEditItem({ ...editItem, birthDate: e.target.value })
                   }
                 />
-                <InputMask
-                  mask="9" // Máscara para Número de Filhos
-                  type="text"
+                <input
+                  type="number"
                   className="edit-input"
                   value={editItem.children}
-                  onChange={(e: any) =>
-                    setEditItem({ ...editItem, children: e.target.value })
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setEditItem({ ...editItem, children: Number(e.target.value) })
                   }
                 />
                 <div >
