@@ -1,6 +1,8 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { format } from 'date-fns';
 import { BASE_URL } from './util/request';
+import CurrencyInputField from 'react-currency-input-field';
+import InputMask from 'react-input-mask';
 import './App.css'
 
 interface Worker {
@@ -9,7 +11,7 @@ interface Worker {
   cpf: string;
   income: number;
   birthDate: string;
-  children: number;
+  children: string;
 }
 
 const formatDate = (dateString: string): string => {
@@ -23,14 +25,15 @@ const formatDate = (dateString: string): string => {
 
 
 function App() {
+  const [isFormValid, setIsFormValid] = useState(true);
   const [data, setData] = useState<Worker[]>([]);
   const [newItem, setNewItem] = useState<Worker>({
     id: 0,
     name: '',
     cpf: '',
-    income: 0,
+    income: 1,
     birthDate: '',
-    children: 0
+    children: ''
   });
   const [editItem, setEditItem] = useState<Worker | null>(null);
 
@@ -52,6 +55,12 @@ function App() {
   const addWorker = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (!newItem.name || !newItem.cpf || !newItem.income || !newItem.birthDate || !newItem.children) {
+      setIsFormValid(false);
+      return;
+    }
+    setIsFormValid(true);
+
     const { birthDate, ...rest } = newItem;
     const formattedBirthDate = format(
       new Date(birthDate),
@@ -71,9 +80,9 @@ function App() {
       id: 0,
       name: '',
       cpf: '',
-      income: 0,
+      income: 1,
       birthDate: '',
-      children: 0
+      children: ''
     });
   };
 
@@ -96,6 +105,13 @@ function App() {
 
   const updateWorker = async () => {
     if (editItem) {
+
+      if (!editItem.name || !editItem.cpf || !editItem.income || !editItem.birthDate || !editItem.children) {
+        setIsFormValid(false);
+        return;
+      }
+      setIsFormValid(true);  
+
       const formattedBirthDate = format(
         new Date(editItem.birthDate),
         "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -127,19 +143,23 @@ function App() {
             value={newItem.name}
             onChange={handleInputChange}
           />
-          <input
+          <InputMask
+            mask="999.999.999-99" // Máscara para CPF
             type="text"
             name="cpf"
             placeholder="CPF"
             value={newItem.cpf}
             onChange={handleInputChange}
           />
-          <input
-            type="number"
+          <CurrencyInputField
             name="income"
             placeholder="Renda"
             value={newItem.income}
-            onChange={handleInputChange}
+            decimalsLimit={2}
+            prefix="R$"
+            onValueChange={(e:any) => {
+              setNewItem({ ...newItem, income: e });
+            }}
           />
           <input
             type="date"
@@ -148,14 +168,16 @@ function App() {
             value={newItem.birthDate}
             onChange={handleInputChange}
           />
-          <input
-            type="number"
+          <InputMask
+            mask="9" // Máscara para Número de Filhos
+            type="text"
             name="children"
             placeholder="Número de Filhos"
             value={newItem.children}
             onChange={handleInputChange}
           />
           <button type="submit">Adicionar</button>
+          {!isFormValid && <div className="error-message">Por favor, preencha todos os campos.</div>}
         </form>
       </div>
       <ul>
@@ -163,7 +185,7 @@ function App() {
           <li key={worker.id} className="edit-item">
             <div>Nome: {worker.name}</div>
             <div>CPF: {worker.cpf}</div>
-            <div>Renda: R$ {worker.income}</div>
+            <div>Renda: R$ {worker.income.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
             <div>Data de Nascimento: {formatDate(worker.birthDate)}</div>
             <div>Número de Filhos: {worker.children}</div>
             {editItem && editItem.id === worker.id ? (
@@ -176,20 +198,22 @@ function App() {
                     setEditItem({ ...editItem, name: e.target.value })
                   }
                 />
-                <input
+                <InputMask
+                  mask="999.999.999-99" // Máscara para CPF
                   type="text"
                   className="edit-input"
                   value={editItem.cpf}
-                  onChange={(e) =>
+                  onChange={(e: any) =>
                     setEditItem({ ...editItem, cpf: e.target.value })
                   }
                 />
-                <input
-                  type="number"
+                <CurrencyInputField
                   className="edit-input"
                   value={editItem.income}
-                  onChange={(e) =>
-                    setEditItem({ ...editItem, income: Number(e.target.value) })
+                  decimalsLimit={2}
+                  prefix="R$"
+                  onValueChange={(e:any) =>
+                    setEditItem({ ...editItem, income: e })
                   }
                 />
                 <input
@@ -200,12 +224,13 @@ function App() {
                     setEditItem({ ...editItem, birthDate: e.target.value })
                   }
                 />
-                <input
-                  type="number"
+                <InputMask
+                  mask="9" // Máscara para Número de Filhos
+                  type="text"
                   className="edit-input"
                   value={editItem.children}
-                  onChange={(e) =>
-                    setEditItem({ ...editItem, children: Number(e.target.value) })
+                  onChange={(e: any) =>
+                    setEditItem({ ...editItem, children: e.target.value })
                   }
                 />
                 <div >

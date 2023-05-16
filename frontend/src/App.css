@@ -16,7 +16,7 @@
 }
 
 h1 {
-  text-align: center;
+  color: #676fff;
 }
 
 form {
@@ -29,7 +29,7 @@ form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
   width: 100%;
-  height: 38px;
+  height: 45px;
   background-color: #1b2531;
   border: 1px solid #384459;
   border-radius: 10px;
@@ -60,7 +60,7 @@ li div:last-child {
 
 li button {
   padding: 4px 8px;
-  background-color: #4287f5;
+  background-color: #676fff;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -91,8 +91,8 @@ li button:last-child {
 }
 
 .edit-form button {
-  padding: 6px 10px;
-  background-color: #4287f5;
+  padding: 8px 18px;
+  background-color: #676fff;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -106,7 +106,7 @@ li button:last-child {
 
 .cancel-button {
   margin-top: 5px;
-  background-color: #dc3545;
+  background-color: #ec5968;
   color: #fff;
 }
 
@@ -130,10 +130,12 @@ li button:last-child {
 }
 
 .edit-input {
-  width: 20%;
+  width: 40%;
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  margin-right: 4px;
+  border: 1px solid #384459;
   border-radius: 10px;
   color: #ffffff;
+  font-size: 15px;  
 }
