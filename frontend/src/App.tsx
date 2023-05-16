@@ -185,7 +185,7 @@ function App() {
           <li key={worker.id} className="edit-item">
             <div>Nome: {worker.name}</div>
             <div>CPF: {worker.cpf}</div>
-            <div>Renda: R$ {worker.income.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
+            <div>Renda: {worker.income.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
             <div>Data de Nascimento: {formatDate(worker.birthDate)}</div>
             <div>Número de Filhos: {worker.children}</div>
             {editItem && editItem.id === worker.id ? (
