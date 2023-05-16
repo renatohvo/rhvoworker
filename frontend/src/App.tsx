@@ -55,7 +55,7 @@ function App() {
   const addWorker = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!newItem.name || !newItem.cpf || !newItem.income || !newItem.birthDate || !newItem.children) {
+    if (!newItem.name || !newItem.cpf || !newItem.income || !newItem.birthDate) {
       setIsFormValid(false);
       return;
     }
