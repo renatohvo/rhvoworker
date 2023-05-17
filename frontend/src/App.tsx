@@ -132,7 +132,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Lista de Trabalhadores</h1>
+      <h2>Lista de Trabalhadores</h2>
       <div className="edit-form">
         <h3>Adicionar Trabalhador</h3>
         <form onSubmit={addWorker}>

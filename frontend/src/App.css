@@ -1,21 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-
-* {
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
-  background-color: #283142;
-  margin: 0;
-  padding: 0;
-  color: #9aaabe;
+.error-message {
+  font-weight: bold;
+  color: #ec5968;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1 {
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   color: #676fff;
 }
 
@@ -59,13 +51,16 @@ li div:last-child {
 }
 
 li button {
-  padding: 4px 8px;
+  padding: 8px 10px;
   background-color: #676fff;
   color: #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   margin-right: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 li button:last-child {
@@ -77,6 +72,7 @@ li button:last-child {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .edit-form input[type="text"],
@@ -98,6 +94,8 @@ li button:last-child {
   border-radius: 10px;
   cursor: pointer;
   margin-right: 5px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .edit-form button:last-child {
@@ -120,7 +118,7 @@ li button:last-child {
 }
 
 .edit-item div {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: #9aaabe;
   background-color: #1b2531;
 }
@@ -130,10 +128,10 @@ li button:last-child {
 }
 
 .edit-input {
-  width: 40%;
+  width: 48%;
   padding: 8px;
   margin-bottom: 10px;
-  margin-right: 4px;
+  margin-right: 2px;
   border: 1px solid #384459;
   border-radius: 10px;
   color: #ffffff;
